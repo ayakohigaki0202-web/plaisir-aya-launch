@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Plaisir｜フレンチと暮らしのオンラインサロン</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --color-bg-main: #f7f3ea;
+    --color-bg-dark: #2f3028;
+    --color-primary: #8d8768;
+    --color-primary-dark: #5f5a43;
+    --color-gold: #b9aa7a;
+    --color-text-main: #3a372f;
+    --color-text-light: #ffffff;
+    --color-muted: #8b8677;
+    --color-border: #d8cfba;
+    --color-card-bg: #fffdf8;
+    --color-accent-red: #8b2828;
+
+    --font-serif-jp: "Noto Serif JP", "Yu Mincho", serif;
+    --font-serif-en: "Cormorant Garamond", serif;
+    --font-sans-jp: "Noto Sans JP", sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    background: #2a2b25;
+  }
+
+  body {
+    font-family: var(--font-sans-jp);
+    font-weight: 400;
+    color: var(--color-text-main);
+    background-color: var(--color-bg-main);
+    font-size: 15px;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+    max-width: 420px;
+    margin: 0 auto;
+    box-shadow: 0 0 48px rgba(0,0,0,.4);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; display: block; }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  section {
+    padding: 64px 20px;
+  }
+
+  /* ============ Typography ============ */
+  h1, h2, h3 {
+    font-family: var(--font-serif-jp);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--color-text-main);
+  }
+
+  h1 { font-size: 28px; line-height: 1.55; }
+  h2 { font-size: 24px; line-height: 1.55; }
+  h3 { font-size: 18px; line-height: 1.7; }
+
+  .section-label {
+    display: inline-block;
+    font-family: var(--font-serif-en);
+    font-size: 14px;
+    letter-spacing: 0.32em;
+    color: var(--color-gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .section-label::after {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--color-gold);
+    margin: 8px auto 0;
+  }
+
+  .section-label.left::after { margin-left: 0; }
+
+  .section-title-jp {
+    font-family: var(--font-serif-jp);
+    font-size: 22px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+
+  .section-head {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  /* ============ Button ============ */
+  .btn {
+    display: inline-block;
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    font-family: var(--font-sans-jp);
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    padding: 16px 36px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .btn:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+  }
+
+  .btn-large {
+    padding: 18px 32px;
+    font-size: 15px;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--color-text-light);
+    border: 1px solid rgba(255,255,255,.5);
+  }
+
+  .btn-outline:hover {
+    background: rgba(255,255,255,.1);
+  }
+
+  /* ============ Top Bar ============ */
+  .topbar {
+    background: #3a382e;
+    color: var(--color-text-light);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    font-family: var(--font-sans-jp);
+  }
+
+  .topbar-logo {
+    font-family: var(--font-serif-en);
+    line-height: 1.05;
+    color: var(--color-text-light);
+  }
+
+  .topbar-logo .en {
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    display: block;
+  }
+
+  .topbar-logo .jp {
+    font-family: var(--font-serif-jp);
+    font-size: 9px;
+    letter-spacing: 0.32em;
+    color: rgba(255,255,255,.7);
+    display: block;
+    margin-top: 2px;
+  }
+
+  .topbar-period {
+    font-size: 10px;
+    color: rgba(255,255,255,.92);
+    letter-spacing: 0.04em;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .topbar-period .label {
+    display: block;
+    font-size: 9px;
+    color: rgba(255,255,255,.7);
+    margin-bottom: 2px;
+  }
+
+  .topbar-period .date {
+    font-family: var(--font-serif-en);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+
+  .topbar-period .date small {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    margin: 0 2px;
+  }
+
+  .topbar-limit {
+    border: 1px solid rgba(255,255,255,.55);
+    padding: 8px 10px;
+    font-size: 10px;
+    line-height: 1.3;
+    text-align: center;
+    letter-spacing: 0.04em;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  /* ============ FV ============ */
+  .fv {
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(247,243,234,.92) 0%, rgba(247,243,234,.55) 28%, rgba(247,243,234,0) 50%),
+      url("https://images.unsplash.com/photo-1544025162-d76694265947?w=1000&q=85");
+    background-size: cover;
+    background-position: center bottom;
+    padding: 36px 24px 320px;
+    min-height: 720px;
+  }
+
+  .fv-eyebrow {
+    font-family: var(--font-serif-jp);
+    font-size: 13px;
+    color: var(--color-text-main);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  .fv-rule {
+    width: 56px;
+    height: 1px;
+    background: #b8ad8a;
+    margin-bottom: 24px;
+  }
+
+  .fv-title {
+    font-family: var(--font-serif-jp);
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.55;
+    letter-spacing: 0.02em;
+    color: #2f3028;
+    margin-bottom: 26px;
+  }
+
+  .fv-title .accent {
+    color: var(--color-accent-red);
+  }
+
+  .fv-sub {
+    font-family: var(--font-serif-jp);
+    font-size: 13px;
+    line-height: 2;
+    color: #4a473d;
+    margin-bottom: 36px;
+  }
+
+  .fv-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: #6a6552;
+    color: var(--color-text-light);
+    padding: 16px 24px 16px 28px;
+    border-radius: 999px;
+    font-family: var(--font-sans-jp);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    box-shadow: 0 12px 28px rgba(47,48,40,.18);
+    transition: background 0.3s ease;
+  }
+
+  .fv-cta:hover { background: var(--color-primary-dark); }
+
+  .fv-cta .arrow {
+    font-family: var(--font-serif-en);
+    font-size: 16px;
+  }
+
+  /* ============ Features Card ============ */
+  .features {
+    background: var(--color-bg-main);
+    padding: 0 16px;
+    margin-top: -200px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .features-card {
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 28px 20px 24px;
+    box-shadow: 0 16px 40px rgba(47,48,40,.1);
+  }
+
+  .features-title {
+    font-family: var(--font-serif-jp);
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 22px;
+    position: relative;
+    color: var(--color-text-main);
+  }
+
+  .features-title::before,
+  .features-title::after {
+    content: "";
+    display: inline-block;
+    width: 28px;
+    height: 18px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 24'><path d='M2 12 C 10 4, 20 4, 28 12' fill='none' stroke='%23a59c7a' stroke-width='1.2'/><path d='M6 14 L 10 10 M 12 16 L 16 12 M 18 18 L 22 14' stroke='%23a59c7a' stroke-width='1' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    margin: 0 8px;
+  }
+
+  .features-title::after { transform: scaleX(-1); }
+
+  .features-title .num {
+    color: var(--color-gold);
+    font-family: var(--font-serif-en);
+    font-size: 20px;
+    margin: 0 2px;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .feature-item {
+    text-align: center;
+    padding: 8px 4px 4px;
+  }
+
+  .feature-icon {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 10px;
+    color: #6a6552;
+  }
+
+  .feature-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .feature-name {
+    font-family: var(--font-serif-jp);
+    font-size: 13px;
+    color: var(--color-text-main);
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+
+  .feature-desc {
+    font-family: var(--font-serif-jp);
+    font-size: 10px;
+    line-height: 1.7;
+    color: #7a7567;
+  }
+
+  /* ============ Free Seminar Banner ============ */
+  .free-seminar {
+    background: var(--color-bg-main);
+    padding: 16px;
+  }
+
+  .free-seminar-inner {
+    background: #c8bd9c;
+    border-radius: 4px;
+    padding: 16px 56px 16px 64px;
+    position: relative;
+    color: #3a372f;
+  }
+
+  .free-seminar-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    color: #5f5a43;
+  }
+
+  .free-seminar-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .free-seminar-text-sm {
+    font-family: var(--font-serif-jp);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    margin-bottom: 2px;
+  }
+
+  .free-seminar-text-lg {
+    font-family: var(--font-serif-jp);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+  }
+
+  .free-seminar-arrow {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    background: #3a372f;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-serif-en);
+    font-size: 14px;
+  }
+
+  .fv-logo {
+    background: #e8e2cf;
+    padding: 24px 32px;
+    text-align: center;
+  }
+
+  .fv-logo img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .fv-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* legacy hero (unused but kept harmless) */
+  .hero { display: none; }
+  .hero-inner, .hero-card, .hero-label, .hero h1, .hero-sub {}
+
+  .hero-rule {
+    width: 40px;
+    height: 1px;
+    background: var(--color-gold);
+    margin-bottom: 28px;
+  }
+
+  /* ============ Problem ============ */
+  .problem {
+    background: var(--color-bg-main);
+  }
+
+  .problem-list {
+    list-style: none;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .problem-list li {
+    font-family: var(--font-serif-jp);
+    font-size: 16px;
+    line-height: 1.9;
+    padding: 20px 0 20px 28px;
+    border-bottom: 1px solid var(--color-border);
+    position: relative;
+  }
+
+  .problem-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--color-gold);
+  }
+
+  .problem-list li:last-child { border-bottom: none; }
+
+  /* ============ Promise ============ */
+  .promise {
+    background: var(--color-card-bg);
+  }
+
+  .promise-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .promise-card {
+    background: var(--color-bg-main);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .promise-num {
+    font-family: var(--font-serif-en);
+    font-size: 32px;
+    color: var(--color-gold);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .promise-card h3 {
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  .promise-card p {
+    font-size: 13px;
+    line-height: 1.9;
+    color: var(--color-muted);
+  }
+
+  /* ============ Lesson ============ */
+  .lesson {
+    background: var(--color-bg-main);
+  }
+
+  .lesson-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: stretch;
+  }
+
+  .lesson-image {
+    aspect-ratio: 4 / 5;
+    background-image: url("lesson.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    box-shadow: 0 16px 40px rgba(47,48,40,.16);
+  }
+
+  .lesson-items {
+    list-style: none;
+  }
+
+  .lesson-items li {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .lesson-items li:last-child { border-bottom: none; }
+
+  .lesson-items .num {
+    font-family: var(--font-serif-en);
+    font-size: 16px;
+    color: var(--color-gold);
+    letter-spacing: 0.16em;
+    min-width: 32px;
+  }
+
+  .lesson-items .name {
+    font-family: var(--font-serif-jp);
+    font-size: 15px;
+    color: var(--color-text-main);
+    flex: 1;
+  }
+
+  .lesson-items .desc {
+    display: block;
+    font-size: 12px;
+    color: var(--color-muted);
+    margin-top: 4px;
+    font-family: var(--font-sans-jp);
+    line-height: 1.7;
+  }
+
+  /* ============ Reviews ============ */
+  .reviews {
+    background: var(--color-bg-main);
+  }
+
+  .review-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .review-card {
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 28px 24px 22px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(47,48,40,.04);
+  }
+
+  .review-card::before {
+    content: "";
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    width: 56px;
+    height: 56px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'><text x='2' y='40' font-family='Cormorant Garamond, serif' font-size='52' fill='%23e8dfc8' font-style='italic'>&quot;</text></svg>");
+    background-repeat: no-repeat;
+    background-position: top right;
+    opacity: 0.9;
+    pointer-events: none;
+  }
+
+  .review-text {
+    font-family: var(--font-serif-jp);
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 18px;
+    color: var(--color-text-main);
+    position: relative;
+    z-index: 1;
+  }
+
+  .review-meta {
+    font-size: 11px;
+    color: var(--color-muted);
+    letter-spacing: 0.12em;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  /* ============ Why Plaisir ============ */
+  .why {
+    background: var(--color-card-bg);
+  }
+
+  .why-cards {
+    display: grid;
+    gap: 14px;
+  }
+
+  .why-card {
+    background: var(--color-bg-main);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 24px 22px;
+  }
+
+  .why-card h3 {
+    font-family: var(--font-serif-jp);
+    font-size: 16px;
+    color: var(--color-accent-red);
+    margin-bottom: 12px;
+    line-height: 1.6;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .why-card .num {
+    font-family: var(--font-serif-en);
+    font-size: 18px;
+    color: var(--color-gold);
+    letter-spacing: 0.04em;
+  }
+
+  .why-card p {
+    font-family: var(--font-serif-jp);
+    font-size: 13px;
+    line-height: 1.9;
+    color: var(--color-text-main);
+  }
+
+  .section-title-jp .accent {
+    color: var(--color-accent-red);
+  }
+
+  /* ============ Limited Banner ============ */
+  .limited-banner {
+    background: rgba(255,253,248,0.06);
+    border: 1.5px dashed var(--color-gold);
+    border-radius: 6px;
+    padding: 20px 16px 18px 22px;
+    margin: 0 0 32px;
+    position: relative;
+    text-align: left;
+  }
+
+  .limited-tag {
+    display: inline-block;
+    background: var(--color-accent-red);
+    color: #fff;
+    font-family: var(--font-serif-jp);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 5px 14px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+
+  .limited-text {
+    font-family: var(--font-serif-jp);
+    font-size: 13px;
+    line-height: 1.85;
+    color: rgba(255,255,255,.92);
+  }
+
+  .limited-text .hl {
+    color: var(--color-gold);
+    font-weight: 500;
+  }
+
+  /* ============ Profile ============ */
+  .profile {
+    background: var(--color-bg-main);
+  }
+
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-image {
+    aspect-ratio: 1 / 1;
+    background-image: url("chef.png");
+    background-size: cover;
+    background-position: center 28%;
+    border-radius: 50%;
+    box-shadow: 0 16px 40px rgba(47,48,40,.16);
+    width: 220px;
+    height: 220px;
+    margin: 0 auto;
+  }
+
+  .profile h2 {
+    margin-bottom: 16px;
+  }
+
+  .profile-name-en {
+    font-family: var(--font-serif-en);
+    font-size: 22px;
+    color: var(--color-gold);
+    letter-spacing: 0.12em;
+    margin-bottom: 4px;
+  }
+
+  .profile-text {
+    font-family: var(--font-serif-jp);
+    font-size: 14px;
+    line-height: 2;
+    margin-bottom: 28px;
+    text-align: left;
+  }
+
+  .profile-stats {
+    display: flex;
+    gap: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-border);
+    justify-content: center;
+  }
+
+  .profile-stat .num {
+    font-family: var(--font-serif-en);
+    font-size: 28px;
+    color: var(--color-primary-dark);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .profile-stat .label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--color-muted);
+  }
+
+  /* ============ Books ============ */
+  .books {
+    background: var(--color-card-bg);
+  }
+
+  .books-lead {
+    text-align: center;
+    font-family: var(--font-serif-jp);
+    font-size: 14px;
+    color: var(--color-text-main);
+    line-height: 1.9;
+    margin-bottom: 32px;
+  }
+
+  .books-lead .crown {
+    font-family: var(--font-serif-jp);
+    color: var(--color-accent-red);
+    font-weight: 600;
+  }
+
+  .books-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 12px;
+  }
+
+  .book-card {
+    text-align: center;
+  }
+
+  .book-cover {
+    aspect-ratio: 3 / 4;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--color-bg-main);
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    box-shadow: 0 8px 20px rgba(47,48,40,.12);
+    margin-bottom: 10px;
+  }
+
+  .book-title {
+    font-family: var(--font-serif-jp);
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--color-text-main);
+    padding: 0 4px;
+  }
+
+  /* ============ Proof / Countdown ============ */
+  .proof {
+    background: var(--color-bg-main);
+    text-align: center;
+  }
+
+  .proof-stats {
+    margin-bottom: 32px;
+  }
+
+  .proof-label {
+    font-family: var(--font-serif-jp);
+    font-size: 14px;
+    color: var(--color-muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+
+  .proof-num {
+    font-family: var(--font-serif-en);
+    font-size: 88px;
+    line-height: 1;
+    color: var(--color-primary-dark);
+    letter-spacing: 0.02em;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+
+  .proof-num .unit {
+    font-family: var(--font-serif-jp);
+    font-size: 40px;
+    color: var(--color-gold);
+    margin-left: 4px;
+    vertical-align: 12px;
+  }
+
+  .proof-desc {
+    font-family: var(--font-serif-jp);
+    font-size: 14px;
+    color: var(--color-text-main);
+  }
+
+  .proof-review {
+    margin-bottom: 36px;
+    font-family: var(--font-serif-jp);
+    font-size: 13px;
+    color: var(--color-text-main);
+  }
+
+  .proof-review .stars {
+    color: var(--color-gold);
+    font-size: 14px;
+    letter-spacing: 0.16em;
+    margin-right: 10px;
+  }
+
+  .countdown {
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 24px 16px 20px;
+    margin-bottom: 32px;
+    box-shadow: 0 12px 28px rgba(47,48,40,.06);
+  }
+
+  .countdown-title {
+    font-family: var(--font-serif-jp);
+    font-size: 13px;
+    color: var(--color-muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+  }
+
+  .countdown-timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .cd-block {
+    flex: 1;
+    text-align: center;
+  }
+
+  .cd-num {
+    font-family: var(--font-serif-en);
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--color-primary-dark);
+    line-height: 1;
+    display: block;
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+
+  .cd-label {
+    font-family: var(--font-serif-jp);
+    font-size: 11px;
+    color: var(--color-muted);
+    letter-spacing: 0.08em;
+  }
+
+  .cd-sep {
+    font-family: var(--font-serif-en);
+    font-size: 24px;
+    color: var(--color-gold);
+    line-height: 1;
+    margin-top: -16px;
+  }
+
+  /* ============ Price / CTA ============ */
+  .price {
+    background: var(--color-bg-dark);
+    color: var(--color-text-light);
+    text-align: center;
+  }
+
+  .price .section-label {
+    color: var(--color-gold);
+  }
+
+  .price h2 {
+    color: var(--color-text-light);
+    margin-bottom: 16px;
+  }
+
+  .price-amount {
+    font-family: var(--font-serif-en);
+    font-size: 64px;
+    line-height: 1;
+    color: var(--color-text-light);
+    letter-spacing: 0.02em;
+    margin: 32px 0 8px;
+  }
+
+  .price-amount .yen {
+    font-size: 24px;
+    vertical-align: 14px;
+    margin-right: 6px;
+  }
+
+  .price-amount .unit {
+    font-family: var(--font-sans-jp);
+    font-size: 14px;
+    color: var(--color-gold);
+    letter-spacing: 0.16em;
+    margin-left: 6px;
+  }
+
+  .price-note {
+    font-size: 12px;
+    color: rgba(255,255,255,.7);
+    margin-bottom: 32px;
+    line-height: 1.8;
+  }
+
+  .price-includes {
+    width: 100%;
+    margin: 0 auto 32px;
+    list-style: none;
+    text-align: left;
+  }
+
+  .price-includes li {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    font-size: 13px;
+    color: rgba(255,255,255,.92);
+    position: relative;
+    padding-left: 24px;
+    line-height: 1.7;
+  }
+
+  .price-includes li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--color-gold);
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cta-row .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* ============ Footer ============ */
+  footer {
+    background: var(--color-bg-dark);
+    color: rgba(255,255,255,.5);
+    padding: 24px 20px 40px;
+    text-align: center;
+    font-size: 11px;
+    border-top: 1px solid rgba(255,255,255,.1);
+    letter-spacing: 0.08em;
+    line-height: 2;
+  }
+
+  footer a {
+    color: rgba(255,255,255,.7);
+    margin: 0 8px;
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ FV (画像そのまま) ============ -->
+<div class="fv-image">
+  <img src="fv.png" alt="Plaisir｜フレンチ料理家のオンラインサロン" />
+</div>
+
+<!-- ============ PROBLEM ============ -->
+<section class="problem">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-label">Problem</span>
+      <h2 class="section-title-jp">こんな悩み、ありませんか</h2>
+    </div>
+    <ul class="problem-list">
+      <li>毎日作っているのに、料理が「義務」になっている</li>
+      <li>レシピ通りに作っても、なぜか美味しくならない</li>
+      <li>盛り付けに自信がなくて、写真が撮れない</li>
+      <li>いつもの食卓に、ときめきがなくなってきた</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PROMISE ============ -->
+<section class="promise">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-label">Promise</span>
+      <h2 class="section-title-jp">Plaisirで変わる、3つのこと</h2>
+    </div>
+    <div class="promise-grid">
+      <div class="promise-card">
+        <span class="promise-num">01</span>
+        <h3>副菜が、前菜になる</h3>
+        <p>いつもの食材を、ビストロの一皿に変える組み立て方が身につきます。</p>
+      </div>
+      <div class="promise-card">
+        <span class="promise-num">02</span>
+        <h3>火入れが、感覚ではなく判断になる</h3>
+        <p>「なぜそうするか」を理論で理解すれば、レシピがなくても迷いません。</p>
+      </div>
+      <div class="promise-card">
+        <span class="promise-num">03</span>
+        <h3>いつもの食材が、ビストロ風になる</h3>
+        <p>スーパーの食材で、レストランのような一皿が日常に並びます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LESSON ============ -->
+<section class="lesson">
+  <div class="container">
+    <div class="lesson-grid">
+      <div class="lesson-image"></div>
+      <div>
+        <span class="section-label left">Lesson</span>
+        <h2 class="section-title-jp">レッスン内容</h2>
+        <ul class="lesson-items">
+          <li>
+            <span class="num">01</span>
+            <span class="name">
+              月1回のオリジナルレッスン
+              <span class="desc">月4本以上の新作レシピ動画を毎月配信</span>
+            </span>
+          </li>
+          <li>
+            <span class="num">02</span>
+            <span class="name">
+              アーカイブ見放題
+              <span class="desc">過去すべてのレッスン動画にいつでもアクセス</span>
+            </span>
+          </li>
+          <li>
+            <span class="num">03</span>
+            <span class="name">
+              理論解説つきの動画
+              <span class="desc">レシピではなく「なぜ」を学べる構成</span>
+            </span>
+          </li>
+          <li>
+            <span class="num">04</span>
+            <span class="name">
+              盛り付けの考え方
+              <span class="desc">センスではなく視点で組み立てる方法</span>
+            </span>
+          </li>
+          <li>
+            <span class="num">05</span>
+            <span class="name">
+              フレンチの基本技術
+              <span class="desc">家庭の道具で再現できる本物の手順</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews">
+  <div class="container">
+    <div class="section-head" style="text-align:left; margin-bottom:32px;">
+      <span class="section-label left">Voice</span>
+      <h2 class="section-title-jp" style="text-align:left; margin-bottom:0;">会員さんの声</h2>
+    </div>
+    <div class="review-grid">
+      <div class="review-card">
+        <p class="review-text">「プロの味って言ってくれるようになった」と家族に言われました。入会してよかったです。</p>
+        <p class="review-meta">40代女性 ／ 入会3ヶ月</p>
+      </div>
+      <div class="review-card">
+        <p class="review-text">料理が義務になって憂鬱だった。また楽しめるようになりたくて入会しました。毎日やることじゃなくて、作りたくてやる感覚になれました。</p>
+        <p class="review-meta">50代女性 ／ 入会6ヶ月</p>
+      </div>
+      <div class="review-card">
+        <p class="review-text">レシピ通りに作っても「なぜそうするか」がわからなくて不安でした。Plaisirで理論を学んでから、その不安が消えました。</p>
+        <p class="review-meta">30代女性 ／ 入会4ヶ月</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY PLAISIR ============ -->
+<section class="why">
+  <div class="container">
+    <div class="section-head" style="text-align:left; margin-bottom:32px;">
+      <span class="section-label left">Why Plaisir</span>
+      <h2 class="section-title-jp" style="text-align:left; margin-bottom:0;">料理が上手くなる以外に、<br />Plaisirにいる<span class="accent">3つの理由</span></h2>
+    </div>
+    <div class="why-cards">
+      <div class="why-card">
+        <h3><span class="num">①</span>シェフに見てもらえる</h3>
+        <p>月5,000円で、フォロワー46万人のフレンチ料理家に自分の料理を直接見てもらえる。つくれぽを送るとコメントが返ってくる。これは普通では買えない体験です。</p>
+      </div>
+      <div class="why-card">
+        <h3><span class="num">②</span>続けるための環境代</h3>
+        <p>料理を一人で続けられる人はほぼいません。月5,000円は「料理と向き合い続ける仕組みを買っている」ということ。払っている自分でいることが、続ける理由になります。</p>
+      </div>
+      <div class="why-card">
+        <h3><span class="num">③</span>同じ価値観の人がいる場所</h3>
+        <p>「料理を義務からごほうびにしたい」という感覚は、日常ではなかなか理解してもらえない。Plaisirには同じ気持ちを持つ人が集まっています。ひとりじゃないという安心感があります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROFILE ============ -->
+<section class="profile">
+  <div class="container">
+    <div class="profile-grid">
+      <div class="profile-image"></div>
+      <div>
+        <span class="section-label left">Chef Profile</span>
+        <div class="profile-name-en">Aya Fukazawa</div>
+        <h2>あやシェフ</h2>
+        <p class="profile-text">
+          フレンチ料理家。パリで修業ののち、家庭で再現できるフレンチを伝える活動を始める。<br /><br />
+          「料理を、人生のごほうびに」をテーマに、スーパーの食材でレストランのような一皿を作る方法を発信。SNS総フォロワーは40万人を超え、著書はAmazonベストセラー4冠を達成。
+        </p>
+        <div class="profile-stats">
+          <div class="profile-stat">
+            <span class="num">45<small style="font-size:18px">万</small></span>
+            <span class="label">SNS Followers</span>
+          </div>
+          <div class="profile-stat">
+            <span class="num">4</span>
+            <span class="label">Bestseller Books</span>
+          </div>
+          <div class="profile-stat">
+            <span class="num">377</span>
+            <span class="label">Members</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKS ============ -->
+<section class="books">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-label">Books</span>
+      <h2 class="section-title-jp">Amazonベストセラー<br /><span class="accent">4冠達成</span>のレシピ本</h2>
+    </div>
+    <p class="books-lead">著書4冊、すべて<span class="crown">Amazonランキング1位</span>。<br />家庭で再現できるフレンチの世界を、書籍でも届けています。</p>
+    <div class="books-grid">
+      <div class="book-card">
+        <div class="book-cover" style="background-image:url('book4.png');"></div>
+        <p class="book-title">パイシートすごっ</p>
+      </div>
+      <div class="book-card">
+        <div class="book-cover" style="background-image:url('book3.png');"></div>
+        <p class="book-title">毎日おいしい<br />肉の作りおき</p>
+      </div>
+      <div class="book-card">
+        <div class="book-cover" style="background-image:url('book2.png');"></div>
+        <p class="book-title">今日は、おうちで<br />週末レストラン。</p>
+      </div>
+      <div class="book-card">
+        <div class="book-cover" style="background-image:url('book1.png');"></div>
+        <p class="book-title">出張料理人あやシェフの<br />おうちレストラン</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROOF / COUNTDOWN ============ -->
+<section class="proof">
+  <div class="container">
+    <div class="section-head" style="margin-bottom:32px;">
+      <span class="section-label">Proof</span>
+      <h2 class="section-title-jp" style="margin-bottom:0;">現在の会員数</h2>
+    </div>
+
+    <div class="proof-stats">
+      <div class="proof-num">377<span class="unit">名</span></div>
+      <div class="proof-desc">が毎月の料理を楽しんでいます</div>
+    </div>
+
+    <div class="proof-review">
+      <span class="stars">★★★★★</span>
+      <span>「料理が楽しくなりました」</span>
+    </div>
+
+    <div class="countdown">
+      <div class="countdown-title">次回募集開始まで</div>
+      <div class="countdown-timer">
+        <div class="cd-block">
+          <span class="cd-num" id="cd-days">--</span>
+          <span class="cd-label">日</span>
+        </div>
+        <span class="cd-sep">:</span>
+        <div class="cd-block">
+          <span class="cd-num" id="cd-hours">--</span>
+          <span class="cd-label">時間</span>
+        </div>
+        <span class="cd-sep">:</span>
+        <div class="cd-block">
+          <span class="cd-num" id="cd-minutes">--</span>
+          <span class="cd-label">分</span>
+        </div>
+        <span class="cd-sep">:</span>
+        <div class="cd-block">
+          <span class="cd-num" id="cd-seconds">--</span>
+          <span class="cd-label">秒</span>
+        </div>
+      </div>
+    </div>
+
+    <a href="#cta" class="btn btn-large" style="display:block; text-align:center;">Plaisirに参加する</a>
+  </div>
+</section>
+
+<!-- ============ PRICE / CTA ============ -->
+<section class="price" id="cta">
+  <div class="container">
+    <span class="section-label">Membership</span>
+    <h2>Plaisirに参加する</h2>
+    <div class="price-amount">
+      <span class="yen">¥</span>5,000<span class="unit">／月</span>
+    </div>
+    <p class="price-note">いつでも解約OK ／ 年間プラン 60,000円（2ヶ月分お得）</p>
+
+    <ul class="price-includes">
+      <li>月4本以上のオリジナルレシピ動画（理論解説つき）</li>
+      <li>会員限定コミュニティ（作ったものを共有）</li>
+      <li>過去レッスン動画アーカイブ見放題</li>
+      <li>シェフによる直接のフィードバック</li>
+    </ul>
+
+    <div class="limited-banner">
+      <span class="limited-tag">期間限定</span>
+      <p class="limited-text">
+        5月ローンチ限定。年間プランのご入会で<span class="hl">特典コンテンツをプレゼント</span>。<br />
+        受付締切：<span class="hl">5月26日（月）23:59</span>
+      </p>
+    </div>
+
+    <div class="cta-row">
+      <a href="#" class="btn btn-large">いますぐ参加する</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    var target = new Date('2026-05-23T00:00:00+09:00').getTime();
+    var elDays = document.getElementById('cd-days');
+    var elHours = document.getElementById('cd-hours');
+    var elMinutes = document.getElementById('cd-minutes');
+    var elSeconds = document.getElementById('cd-seconds');
+
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+    function tick() {
+      var diff = target - new Date().getTime();
+      if (diff <= 0) {
+        elDays.textContent = '0';
+        elHours.textContent = '00';
+        elMinutes.textContent = '00';
+        elSeconds.textContent = '00';
+        return;
+      }
+      var d = Math.floor(diff / 86400000);
+      var h = Math.floor((diff % 86400000) / 3600000);
+      var m = Math.floor((diff % 3600000) / 60000);
+      var s = Math.floor((diff % 60000) / 1000);
+      elDays.textContent = d;
+      elHours.textContent = pad(h);
+      elMinutes.textContent = pad(m);
+      elSeconds.textContent = pad(s);
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>
+
+<footer>
+  © 2026 Plaisir
+  <a href="#">特定商取引法に基づく表記</a>
+  <a href="#">プライバシーポリシー</a>
+  <a href="#">利用規約</a>
+</footer>
+
+</body>
+</html>
